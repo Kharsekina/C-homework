@@ -5,28 +5,28 @@
 // 8 4 2 4
 // 1, 7 -> такого элемента в массиве нет
 
-int [,] CreateMatrix(int rows, int col, int min, int max)
+int[,] CreateMatrix(int rows, int col, int min, int max)
 {
-    int [,] mtrx = new int [rows, col];
+    int[,] mtrx = new int[rows, col];
     Random rnd = new Random();
 
     for (int i = 0; i < mtrx.GetLength(0); i++)
     {
         for (int j = 0; j < mtrx.GetLength(1); j++)
         {
-            mtrx[i, j] = rnd.Next(min,max+1);
+            mtrx[i, j] = rnd.Next(min, max + 1);
         }
     }
     return mtrx;
 }
 
-void PrintMatrix(int [,] mtrx)
+void PrintMatrix(int[,] mtrx)
 {
-   for (int i = 0; i < mtrx.GetLength(0); i++)
+    for (int i = 0; i < mtrx.GetLength(0); i++)
     {
         for (int j = 0; j < mtrx.GetLength(1); j++)
         {
-            Console.Write($"{mtrx[i,j],4}");
+            Console.Write($"{mtrx[i, j],4}");
         }
         Console.WriteLine();
     }
@@ -34,21 +34,20 @@ void PrintMatrix(int [,] mtrx)
 
 bool FindNumber(int num1, int num2, int[,] mtrx)
 {
-    int i= mtrx.GetLength(0)-1;
-    int j=mtrx.GetLength(1)-1;
-    
-    if (num1<0 && num1>i) return false;
-    if (num2<0 && num2>j) return false;
+    if (num1 > mtrx.GetLength(0) - 1 || num2 > mtrx.GetLength(1) - 1) return false;
+    if (num1 < 0 || num2 < 0) return false;
     return true;
 }
 
-int [,] matrix=CreateMatrix(4,4,-10,10);
+int[,] matrix = CreateMatrix(4, 4, -10, 10);
 PrintMatrix(matrix);
+
 Console.WriteLine("Введите номер строки");
-int rowsNumber=Convert.ToInt32(Console.ReadLine());
+int rowsNumber = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите номер столбца");
-int colNumber=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine();
-string output=FindNumber(rowsNumber,colNumber,matrix)?$"Число {matrix[rowsNumber,colNumber]}":"Такого элемента нет в массиве";
+int colNumber = Convert.ToInt32(Console.ReadLine());
+
+
+string output = FindNumber(rowsNumber, colNumber, matrix) ? $"Число {matrix[rowsNumber, colNumber]}" : "Такого элемента нет в массиве";
 Console.WriteLine(output);
 
