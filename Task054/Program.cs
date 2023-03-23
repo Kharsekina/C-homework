@@ -41,14 +41,14 @@ void SortDescending(int[,] mtrx)
     {
         for (int j = 0; j < mtrx.GetLength(1) - 1; j++)
         {
-            int minPosition = j;
+            int maxPosition = j;
             for (int k = j + 1; k < mtrx.GetLength(1); k++)
             {
-                if (mtrx[i,k]<mtrx[i,minPosition]) minPosition=k;
+                if (mtrx[i,k]>mtrx[i,maxPosition]) maxPosition=k;
             }
             int temp=mtrx[i,j];
-            mtrx[i,j]=mtrx[i,minPosition];
-            mtrx[i,minPosition]=temp;
+            mtrx[i,j]=mtrx[i,maxPosition];
+            mtrx[i,maxPosition]=temp;
         }
     }
 }
