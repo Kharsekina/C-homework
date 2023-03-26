@@ -5,12 +5,21 @@
 Console.WriteLine("Введите число N");
 int numberN=Convert.ToInt32(Console.ReadLine());
 if (numberN<1) Console.WriteLine("Введите число больше 1");
-else NaturalNumbers(numberN);
+else 
+{
+    Console.Write($"N={numberN}->");
+    NaturalNumbers(numberN);
+}
 
 void NaturalNumbers(int num)
 {
     if(num==0) return;
-    Console.Write($"{num}");
+    if (num==1) 
+    {
+        Console.Write("1");
+        return;
+    }
+    Console.Write($"{num}, ");
     NaturalNumbers(num-1);
 }
 
